@@ -49,6 +49,5 @@ public class StudentDAOImpl implements StudentDAO {
 	public void deleteStudent(int id) {
 		jdbcTemplate.update("DELETE FROM STUDENT WHERE ID = ?", new Object[] { id });
 	}
-	
-	
+
 }

@@ -16,6 +16,12 @@ public class Student {
 		this.age = age;
 		this.weight = weight;
 	}
+	
+	public Student(String name, int age, int weight) {
+		this.name = name;
+		this.age = age;
+		this.weight = weight;
+	}
 
 	public int getId() {
 		return id;
