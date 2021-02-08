@@ -2,7 +2,7 @@ package com.spring.rest.jdbc.dao;
 
 import java.util.List;
 
-import com.spring.jdbc.model.Student;
+import com.spring.rest.model.Student;
 
 public interface StudentDAO {
 
@@ -12,7 +12,7 @@ public interface StudentDAO {
 	
 	public Student updateStudent(int id, Student student);
 	
-	public Student addStudent(Student student);
+	public void addStudent(Student student);
 	
-	public boolean deleteStudent(int id);
+	public void deleteStudent(int id);
 }

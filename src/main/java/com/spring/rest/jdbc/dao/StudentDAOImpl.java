@@ -4,18 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
-import com.spring.jdbc.model.Student;
-import com.spring.jdbc.model.StudentMapper;
+import com.spring.rest.model.Student;
+import com.spring.rest.model.StudentMapper;
 
 @Component
 public class StudentDAOImpl implements StudentDAO {
 
 	@Autowired
-	JdbcTemplate jdbcTemplate;
+	private JdbcTemplate jdbcTemplate;
 
 	@Override
 	public List<Student> getAllStudents() {
@@ -36,21 +34,20 @@ public class StudentDAOImpl implements StudentDAO {
 
 	@Override
 	public Student updateStudent(int id, Student student) {
-		jdbcTemplate.update("UPDATE STUDENT SET NAME = ?, AGE = ?, WEIGHT = ?", 
+		jdbcTemplate.update("UPDATE STUDENT SET NAME = ?, AGE = ?, WEIGHT = ? WHERE ID = ?", 
 				new Object[] { student.getName(), student.getAge(), student.getWeight(), id });
 		return findStudentById(id);
 	}
 
 	@Override
-	public Student addStudent(Student student) {
-		jdbcTemplate.update("INSERT INTO STUDENT (ID,NAME,AGE,WEIGHT) VALUES (?,?,?,?)",
-				new Object[] { student.getId(), student.getName(), student.getAge(), student.getWeight() });
-		return findStudentById(student.getId());
+	public void addStudent(Student student) {
+		jdbcTemplate.update("INSERT INTO STUDENT (NAME, AGE, WEIGHT) VALUES (?,?,?)",
+				new Object[] { student.getName(), student.getAge(), student.getWeight() });
 	}
 
 	@Override
-	public boolean deleteStudent(int id) {
-		return jdbcTemplate.update("DELETE FROM STUDENT WHERE ID = ?", new Object[] { id }) > 0;
+	public void deleteStudent(int id) {
+		jdbcTemplate.update("DELETE FROM STUDENT WHERE ID = ?", new Object[] { id });
 	}
 	
 	

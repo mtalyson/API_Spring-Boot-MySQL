@@ -1,4 +1,4 @@
-package com.spring.jdbc.model;
+package com.spring.rest.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

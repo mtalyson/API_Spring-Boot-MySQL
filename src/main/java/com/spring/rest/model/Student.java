@@ -1,4 +1,4 @@
-package com.spring.jdbc.model;
+package com.spring.rest.model;
 
 public class Student {
 	
